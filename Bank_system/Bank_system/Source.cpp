@@ -10,14 +10,14 @@ int main() {
 	cout << "Welcome to the National Bank\n\n";
 
 	string first_name, last_name;
-	c1.ch_name(first_name, last_name);
+	c1.set_first_name();
 	cout << "Enter id \n";
 
 	int i;
 	cin >> i;
 	c1.set_id(i);
 
-	c1.get_password();
+	c1.set_password();
 
 	cout << "1- Deposit\n";
 	cout << "2- Withdraw\n";
@@ -57,11 +57,11 @@ int main() {
 	}
 	Admin admin1("Mariam", 402);
 	admin1.createAccount(1001, "Amaar", 500.0);
-	
+
 
 	admin1.viewAllAccounts();
 
 	admin1.deleteAccount();
 	admin1.viewAllAccounts();
 }
-	
+

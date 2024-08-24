@@ -5,6 +5,31 @@
 #include <vector>
 
 using namespace std;
+bool checkAlpha(string str) {
+
+	bool retVal = false;
+	while (retVal == false)
+	{
+
+
+		for (int i = 0; i < str.size(); i++) {
+			if (isalpha(str[i]) == 0) {
+
+				retVal = false;
+				cout << "Input must only contain letters\n";
+
+				break;
+
+			}
+			else {
+
+				retVal = true;
+				cout << "all good\n";
+			}
+		}
+		return retVal;
+	}
+}
 class Person
 {
 protected:
@@ -28,18 +53,69 @@ public:
 	{
 		this->id = id;
 	}
-	void set_first_name(string first_name)
+	void set_first_name()
 	{
-		this->first_name = first_name;
+		string first_name;
+		cout << "Enter your name: ";
+		cin >> first_name;
+		bool ch = false;
+		while (ch == false) {
+			if (first_name.length() >= 4 && first_name.length() <= 20 && checkAlpha(first_name) != 0) {
+				this->first_name = first_name;
+				ch = true;
+			}
+			else {
+				cout << "error :Name must be alphabetic and between 5 and 20 characters.\nEnter your name: " << endl;
+				cin >> first_name;
+				break;
+
+			}
+		}
+
+
+
 	}
-	void set_last_name(string last_name)
+	void set_last_name()
 	{
-		this->last_name = last_name;
+		string last_name;
+		cout << "Enter your name: ";
+		cin >> last_name;
+		bool ch = false;
+		while (ch == false) {
+			if (last_name.length() >= 4 && last_name.length() <= 20 && checkAlpha(last_name) != 0) {
+				this->last_name = last_name;
+				ch = true;
+			}
+			else {
+				cout << "error :Name must be alphabetic and between 5 and 20 characters.\nEnter your name: " << endl;
+				cin >> last_name;
+				break;
+
+			}
+		}
+
 	}
-	void set_password(string password)
+	void set_password()
 	{
-		this->password = password;
-	}
+		string password;
+		cout << "please enter password: ";
+		cin >> password;
+		bool ch = false;
+		while (ch==false)
+		{
+			if (password.length() < 8) {
+				cout << "password should be more than 8 char.\n please enter correct password: ";
+				cin >> password;
+
+			}
+			else {
+				this->password = password;
+				ch = true;
+			}
+		}
+
+		}
+
 
 	//getters
 	string get_first_name() {
@@ -55,6 +131,7 @@ public:
 		return this->id;
 	}
 	virtual void displayRole() const = 0;
+
 
 };
 
@@ -77,7 +154,7 @@ public:
 		return this->balance;
 	}
 
-	void ch_name(string first_name, string last_name) {
+	/*void ch_name(string first_name, string last_name) {
 		bool found = false;
 		int b;
 		cout << "Enter the first name\n";
@@ -108,15 +185,15 @@ public:
 			cout << "Enter the name from 5 to 20 character\n";
 		}
 
-	}
+	}*/
 
-	void set_password(string password) {
+	/*void set_password(string password) {
 		cout << "Enter the password\n";
 		cin >> password;
 		if (password.length() < 8 || password.length() > 20)
 			cout << "Enter the password from 8 to 20 character\n";
 
-	}
+	}*/
 
 
 	void name() {
@@ -249,12 +326,12 @@ public:
 			}
 			cout << "Account not found!\n please enter valid ID" << endl;
 			cin >> account_num;
-			
+
 		}
 	}
 
 	void viewAllAccounts() const {
-		
+
 		for (const auto& account : accounts) {
 			displayRole();
 			account.displayAccountDetails();
